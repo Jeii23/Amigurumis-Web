@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/estilos.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="center">
+        <h2>Formulario de Registro</h2>
+        
+        <form action="/submit_registration" method="post">
+          <div class="column">
+            <label for="fname">Nombre:</label><br>
+            <input type="text" id="fname" name="fname" pattern="[A-Za-z\s]+" required><br>
+            <label for="email">Correo Electrónico:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <label for="password">Contraseña:</label><br>
+            <input type="password" id="password" name="password" pattern="[A-Za-z0-9]+" required><br>
+          </div>
+          <div class="column">
+            <label for="address">Dirección:</label><br>
+            <input type="text" id="address" name="address" maxlength="30"><br>
+            <label for="city">Ciudad:</label><br>
+            <input type="text" id="city" name="city" maxlength="30"><br>
+            <label for="zip">Código Postal:</label><br>
+            <input type="text" id="zip" name="zip" pattern="\d{5}" required><br><br>
+          </div>
+          <div class="submit-button">
+            <input type="submit" value="Registrar">
+          </div>
+        </form> 
+        </div>
+</body>
+
+</html>

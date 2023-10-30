@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    background-color: #EAFFD0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.wrap {
+    width: 100%;
+    margin: auto;
+
+
+}
+
+
+
+.wrap .header {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FCE38A;
+    /* Cambia esto al color que prefieras para la barra */
+    padding: 20px;
+    /* Ajusta esto para cambiar el tamaño de la barra */
+
+}
+
+.wrap .header>h1 {
+
+    color: #F38181;
+    font-weight: 450;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 15px 0px;
+}
+
+.wrap .login_register a {
+
+    width: 18%;
+    display: flex;
+    width: 80%;
+    padding: 15px 10px;
+    margin-bottom: 20px;
+    background: #95E1D3;
+    box-shadow: 0px 0px 6px 0px  #F38181;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+
+}
+
+.wrap>h1:after {
+
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: black;
+    margin: 20px 0px;
+
+
+}
+
+.store-wrapper {
+    display: flex;
+
+
+}
+
+
+
+.login_register {
+    display: flex;
+    gap: 10px;
+}
+
+
+.category_list {
+    display: flex;
+    flex-direction: column;
+    width: 18%;
+}
+
+.category_list .category_item {
+
+    display: block;
+    width: 80%;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    background: #FCE38A;
+    box-shadow: 0px 0px 6px 0px #95E1D3;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    margin-left: 8%;
+    margin-top: 5%;
+    
+}
+
+.products-list {
+
+    width: 82%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.products-list .porduct-item {
+
+    width: 22%;
+    background: gray;
+    margin-bottom: 25px;
+    box-shadow: 0px 0px 6px 0px blue;
+    margin-right: 3%;
+    margin-top: 1%;
+
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.products-list .porduct-item img {
+
+    width: 100%;
+}
+
+.products-list .porduct-item a {
+
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    background-color: gray;
+
+
+    color: white;
+    text-align: center;
+    text-decoration: none;
+
+}
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.column {
+    flex: 50%;
+}
+
+.column label, .column input {
+    margin-bottom: 10px;
+}
+
+.submit-button {
+    margin-top: 20px;
+}
