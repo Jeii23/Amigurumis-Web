@@ -1,5 +1,4 @@
 <?php
-    require_once __DIR__.''//No se que poner aqui
     
 
     function conectaDB($password_a8){
