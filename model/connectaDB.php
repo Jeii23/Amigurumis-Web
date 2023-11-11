@@ -1,7 +1,5 @@
 <?php
-    
-
-    function conectaDB($password_a8){
+    function connectaDB($password_a8){
         $servidor = "localhost";
         $port     = "5432";
         $DBnom    = "tdiw-db";
@@ -11,3 +9,5 @@
         user=$usuari password=$clau") or die("Error a la conexio de la DB");
         return($connexio);
     }
+
+?>

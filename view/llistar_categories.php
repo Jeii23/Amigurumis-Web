@@ -7,14 +7,21 @@
 </head>
 <body>
     <!-- // views/llistar_categories.php -->
-2 <ul>
-3 <?php foreach ($categories as $categoria): ?>
-4 <li>
-5 <h3><?php echo $categoria['nom'] ?> </h3>
-6 <p><?php echo $categoria['descripcio'] ?> </p>
-7 </li>
-8 <?php endforeach; ?>
-9 </ul>
+    <ul>
+    <?php include __DIR__.'/../controller/llistar_categories.php'; ?> 
 
+    
+    <?php foreach ($products as $product): ?>
+        <li>
+            <h3><?php echo $product['nom'] ?></h3>
+            <img src='<?php echo $product['imatge'] ?>' alt='<?php echo $product['nom'] ?>'>
+            <p>Descripcion: <?php echo $product['descripcio'] ?></p>
+            <?php echo $product['activo'] ? "<p>Activo</p>" : "<p>Inactivo</p>"; ?>
+            <p>ID: <?php echo $product['id'] ?></p>
+            <p>Precio: <?php echo $product['preu'] ?></p>
+        </li>
+    <?php endforeach; ?>
+    </ul>
 </body>
 </html>
+
