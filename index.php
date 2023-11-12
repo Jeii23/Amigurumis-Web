@@ -5,6 +5,6 @@ switch ($accio) {
         include __DIR__.'/controller/llistar_categories.php';
         break;
     default:
-        include __DIR__.'/view/home.php';
+        include __DIR__.'/controller/home.php';
         break;
 }

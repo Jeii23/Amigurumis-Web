@@ -37,12 +37,10 @@
             <section class="products-list">
                 <?php foreach ($products as $product): ?>
                     <div class="porduct-item" category="Esto">
-                        <img src='<?php echo $product['imatge'] ?>' width="300" height="300" alt='<?php echo $product['nom'] ?>'>
+                    <img src='../imagenes/<?php echo $product['imatge'] ?>.png' width="300" height="300" alt='<?php echo $product['nom'] ?>'>
                         <a href="#"><?php echo $product['nom'] ?></a>
-                        <p>Descripcion: <?php echo $product['descripcio'] ?></p>
-                        <?php echo $product['activo'] ? "<p>Activo</p>" : "<p>Inactivo</p>"; ?>
-                        <p>ID: <?php echo $product['id'] ?></p>
-                        <p>Precio: <?php echo $product['preu'] ?></p>
+                        <p><?php echo $product['descripcio'] ?></p>
+                        <p>Precio: <?php echo $product['preu'] ?>€</p>
                     </div>
                 <?php endforeach; ?>
             </section>
