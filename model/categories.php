@@ -26,36 +26,21 @@ function getProductes($password_a8) {
 }
 // NO ESTOY SEGURO DE ESTO 
 
-function getProductByCategory($category = NULL,$password_a8) {
+function getProductByCategory($category, $password_a8) {
     // Conecta a la base de datos
     $conn = connectaDB($password_a8);
 
     // Prepara la consulta SQL para obtener las categorías
-    $sql = "SELECT * FROM products";
-    if ($category !== NULL) {
-        $sql .= " WHERE categoria = ?";
-    }
+    $sql = "SELECT * FROM products WHERE categoria = '$1';";
 
-    // Prepara la declaración
-    $stmt = pg_query($conn, $sql);
-
-
-    // Si se proporcionó una categoría, vincula el parámetro
-    if ($category !== NULL) {
-        $stmt->bind_param("s", $category);
-    }
-
-    // Ejecuta la consulta
-    $stmt->execute();
-
-    // Obtiene los resultados
-    $result = $stmt->get_result();
+    // Ejecuta la consulta y obtén los resultados
+    $result = pg_query($conn, $sql);
 
     // Verifica si la consulta fue exitosa
-    if ($result->num_rows > 0) {
+    if ($result) {
         // Si hay resultados, los guarda en un array
         $products = [];
-        while($row = $result->fetch_assoc()) {
+        while ($row = pg_fetch_assoc($result)) {
             $products[] = $row;
         }
         return $products;
@@ -65,12 +50,14 @@ function getProductByCategory($category = NULL,$password_a8) {
     }
 }
 
+
+
 function getCategories($password_a8) {
     // Conecta a la base de datos
     $conn = connectaDB($password_a8);
 
     // Prepara la consulta SQL para obtener las categorías
-    $sql = "SELECT * FROM products";
+    $sql = "SELECT DISTINCT categoria FROM products;";
     
 
     // Prepara la declaración
@@ -86,10 +73,10 @@ function getCategories($password_a8) {
     
 
     // Verifica si la consulta fue exitosa
-    if ($result->num_rows > 0) {
+    if ($result) {
         // Si hay resultados, los guarda en un array
         $products = [];
-        while($row = $result->fetch_assoc()) {
+        while ($row = pg_fetch_assoc($result)) {
             $products[] = $row;
         }
         return $products;

@@ -33,7 +33,10 @@ body {
 
 }
 
-.wrap .header>h1 {
+.wrap .header h1 .header-link:link,
+.header-link:visited,
+.header-link:hover,
+.header-link:active {
 
     color: #F38181;
     font-weight: 450;
