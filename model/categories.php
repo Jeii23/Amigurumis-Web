@@ -31,7 +31,7 @@ function getProductByCategory($category, $password_a8) {
     $conn = connectaDB($password_a8);
 
     // Prepara la consulta SQL para obtener las categorías
-    $sql = "SELECT * FROM products WHERE categoria = '$1';";
+    $sql = "SELECT * FROM products WHERE categoria = '$category';";
 
     // Ejecuta la consulta y obtén los resultados
     $result = pg_query($conn, $sql);

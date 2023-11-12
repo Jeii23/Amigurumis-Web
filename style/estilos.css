@@ -44,6 +44,8 @@ body {
     flex-direction: column;
     text-align: center;
     margin: 15px 0px;
+    text-decoration: none; /* Esto quitará el subrayado */
+
 }
 
 .wrap .login_register a {
