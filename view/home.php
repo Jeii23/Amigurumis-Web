@@ -34,7 +34,7 @@
             </div>
             <section class="products-list">
                 <?php foreach ($products as $product): ?>
-                    <div class="porduct-item" category="Esto">
+                    <div class="product-item" category="Esto">
                     <img src='../imagenes/<?php echo $product['imatge'] ?>.png' width="300" height="300" alt='<?php echo $product['nom'] ?>'>
                         <a href="#"><?php echo $product['nom'] ?></a>
                         <p><?php echo $product['descripcio'] ?></p>
