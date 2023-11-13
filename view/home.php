@@ -34,7 +34,6 @@
                     <div class="product-item" category="Esto">
                     <img src='../imagenes/<?php echo $product['imatge'] ?>.png' width="300" height="300" alt='<?php echo $product['nom'] ?>'>
                         <a href="index.php?id=<?php echo $product['id'] ?>"><?php echo $product['nom'] ?></a>
-                        <p><?php echo $product['descripcio'] ?></p>
                         <p>Precio: <?php echo $product['preu'] ?>€</p>
                         <button class="details-button">Ver detalles</button>
 

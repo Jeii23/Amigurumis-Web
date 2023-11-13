@@ -45,11 +45,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
             image.height = 300;
             image.alt = product.nom;
             productItem.appendChild(image);
-            //index.php?accio=categoria&categoria=Anime
             // Añade la descripción del producto
-            const description = document.createElement('p');
-            description.textContent = product.descripcio;
-            productItem.appendChild(description);
+            //const description = document.createElement('p');
+            //description.textContent = product.descripcio;
+            //productItem.appendChild(description);
 
             // Añade el precio del producto
             const price = document.createElement('p');

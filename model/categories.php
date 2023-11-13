@@ -29,10 +29,10 @@ function getProductById($id, $password_a8) {
     $conn = connectaDB($password_a8);
 
     // Prepara la consulta SQL para obtener las categorías
-    $sql = "SELECT * FROM public.products WHERE id = '$id';";
-
+    $sql = "SELECT * FROM public.products WHERE id = $1;";
+    $params = [$id];
     // Ejecuta la consulta y obtén los resultados
-    $result = pg_query($conn, $sql);
+    $result = pg_query_params($conn, $sql,$params);
 
     // Verifica si la consulta fue exitosa
     if ($result) {
@@ -54,10 +54,10 @@ function getProductByCategory($category, $password_a8) {
     $conn = connectaDB($password_a8);
 
     // Prepara la consulta SQL para obtener las categorías
-    $sql = "SELECT * FROM public.products WHERE categoria_id = '$category';";
-
+    $sql = "SELECT * FROM public.products WHERE categoria_id = $1;";
+    $params = [$category];
     // Ejecuta la consulta y obtén los resultados
-    $result = pg_query($conn, $sql);
+    $result = pg_query_params($conn, $sql,$params);
 
     // Verifica si la consulta fue exitosa
     if ($result) {
