@@ -22,16 +22,13 @@
         </div>
    
     
-        <div class="store-wrapper">
-            <div class="category_list">
-                <a href="index.php?accio=categoria&categoria=Anime" class="category_item" category="Anime">Anime</a>                
-                <a href="index.php?accio=categoria&categoria=Fantasia" class="category_item" category="Fantasia">Fantasia</a>
-                <a href="index.php?accio=categoria&categoria=Animal" class="category_item" category="Animal">Animales</a>
-                <a href="index.php?accio=categoria&categoria=Planta" class="category_item" category="Planta">Plantas</a>
-                <a href="index.php?accio=categoria&categoria=Espacio" class="category_item" category="Espacio">Espacio</a>
-                <a href="index.php?accio=categoria&categoria=Juegos" class="category_item" category="Juegos">Juegos</a>
-                <a href="index.php?accio=categoria&categoria=cienciaFiccion" class="category_item" category="cienciaFiccion">Ciencia Ficcion</a>
+            <div class="store-wrapper">
+                <div class="category_list">
+                <?php foreach ($categories as $category): ?>
+                    <a href="index.php?accio=categoria&categoria=<?php echo $category['id'] ?>" class="category_item" category="<?php echo $category['id'] ?>"><?php echo $category['nom'] ?></a>
+                <?php endforeach; ?>
             </div>
+
             <section class="products-list">
                 <?php foreach ($products as $product): ?>
                     <div class="product-item" category="Esto">
