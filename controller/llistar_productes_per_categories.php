@@ -9,9 +9,9 @@ $password_a8 = 'Viz3uVkJ'; //NO ESTOY SEGURO
 // Obtiene la categoría de la URL
 $categoria = $_GET['categoria'] ?? NULL;
 
-$products = getProductByCategory($categoria, $password_a8); // Agafem els productes 
-$categories = getCategories($password_a8); // Agafem els productes 
+$products = getProductByCategory($categoria, $password_a8); // Obtiene los productos 
 
-include __DIR__.'/../view/home.php';
-
+header('Content-Type: application/json');
+echo json_encode($products); // Devuelve los productos en formato JSON
 ?>
+54  

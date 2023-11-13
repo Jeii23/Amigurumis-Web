@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="../style/estilos.css">
     
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
 </head>
 
 <body>
@@ -36,7 +36,7 @@
                 <?php foreach ($products as $product): ?>
                     <div class="product-item" category="Esto">
                     <img src='../imagenes/<?php echo $product['imatge'] ?>.png' width="300" height="300" alt='<?php echo $product['nom'] ?>'>
-                        <a href="#"><?php echo $product['nom'] ?></a>
+                        <a href="index.php?id=<?php echo $product['id'] ?>"><?php echo $product['nom'] ?></a>
                         <p><?php echo $product['descripcio'] ?></p>
                         <p>Precio: <?php echo $product['preu'] ?>€</p>
                     </div>
