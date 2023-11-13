@@ -35,13 +35,14 @@ categoryLinks.forEach(link => {
   });
 });
 // Selecciona todos los productos
-const productItems = document.querySelectorAll('.product-item');
+const detailButtons = document.querySelectorAll('.details-button');
 
-// Añade un event listener a cada producto
-productItems.forEach(item => {
-  item.addEventListener('click', function(event) {
-    // Previene el comportamiento por defecto del enlace
+// Añade un event listener a cada botón
+detailButtons.forEach(button => {
+  button.addEventListener('click', function(event) {
+    // Previene el comportamiento por defecto del botón
     event.preventDefault();
+
 
     // Obtiene el ID del producto del atributo href del enlace
     const productId = this.querySelector('a').getAttribute('href').split('=')[1];

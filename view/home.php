@@ -39,6 +39,8 @@
                         <a href="index.php?id=<?php echo $product['id'] ?>"><?php echo $product['nom'] ?></a>
                         <p><?php echo $product['descripcio'] ?></p>
                         <p>Precio: <?php echo $product['preu'] ?>€</p>
+                        <button class="details-button">Ver detalles</button>
+
                     </div>
                 <?php endforeach; ?>
             </section>

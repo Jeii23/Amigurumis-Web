@@ -11,6 +11,5 @@ $id = $_GET['id'] ?? NULL;
 
 $product = getProductById($id, $password_a8); // Obtiene los detalles del producto 
 
-header('Content-Type: application/json');
-echo json_encode($product); // Devuelve los detalles del producto en formato JSON
+include __DIR__.'/../view/home.php';
 ?>

@@ -11,7 +11,6 @@ $categoria = $_GET['categoria'] ?? NULL;
 
 $products = getProductByCategory($categoria, $password_a8); // Obtiene los productos 
 
-header('Content-Type: application/json');
-echo json_encode($products); // Devuelve los productos en formato JSON
+include __DIR__.'/../view/home.php';
+
 ?>
-54  
