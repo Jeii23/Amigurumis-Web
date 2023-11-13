@@ -16,21 +16,21 @@
         <div class="header">
             <h1><a href=index.php class="header-link">Amigurumi House</a></h1>
             <div class="login_register">
-                <a href="Login_Register/login.html" class="category_item">Login</a>
-                <a href="Login_Register/register.html" class="category_item">Registro</a>
+                <a href="Login_Register/login.html" class="login">Login</a>
+                <a href="Login_Register/register.html" class="registre">Registro</a>
             </div>
         </div>
    
     
         <div class="store-wrapper">
             <div class="category_list">
-                <a href="index.php?accio=categoria&categoria=Anime" class="category_item" category="all">Anime</a>                
-                <a href="index.php?accio=categoria&categoria=Fantasia" class="category_item" category="all">Fantasia</a>
-                <a href="index.php?accio=categoria&categoria=Animal" class="category_item" category="all">Animales</a>
-                <a href="index.php?accio=categoria&categoria=Planta" class="category_item" category="all">Plantas</a>
-                <a href="index.php?accio=categoria&categoria=Espacio" class="category_item" category="all">Espacio</a>
-                <a href="index.php?accio=categoria&categoria=Juegos" class="category_item" category="all">Juegos</a>
-                <a href="index.php?accio=categoria&categoria=cienciaFiccion" class="category_item" category="all">Ciencia Ficcion</a>
+                <a href="index.php?accio=categoria&categoria=Anime" class="category_item" category="Anime">Anime</a>                
+                <a href="index.php?accio=categoria&categoria=Fantasia" class="category_item" category="Fantasia">Fantasia</a>
+                <a href="index.php?accio=categoria&categoria=Animal" class="category_item" category="Animal">Animales</a>
+                <a href="index.php?accio=categoria&categoria=Planta" class="category_item" category="Planta">Plantas</a>
+                <a href="index.php?accio=categoria&categoria=Espacio" class="category_item" category="Espacio">Espacio</a>
+                <a href="index.php?accio=categoria&categoria=Juegos" class="category_item" category="Juegos">Juegos</a>
+                <a href="index.php?accio=categoria&categoria=cienciaFiccion" class="category_item" category="cienciaFiccion">Ciencia Ficcion</a>
             </div>
             <section class="products-list">
                 <?php foreach ($products as $product): ?>

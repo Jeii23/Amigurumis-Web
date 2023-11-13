@@ -1,71 +1,150 @@
-// Selecciona todos los enlaces de categoría
-const categoryLinks = document.querySelectorAll('.category_item');
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('.category_item').forEach(item => {
+    item.addEventListener('click', event => {
+      // Prevent the default action
+      event.preventDefault();
 
-// Añade un event listener a cada enlace
-categoryLinks.forEach(link => {
-  link.addEventListener('click', function(event) {
-    // Previene el comportamiento por defecto del enlace
-    event.preventDefault();
+      // Get the category from the clicked item
+      const category = event.target.getAttribute('category');
 
-    // Obtiene la categoría del atributo href del enlace
-    const category = this.getAttribute('href').split('=')[2];
+      fetch('controller/llistar_productes_per_categories.php?categoria=' + category)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(products => {
+          // Aquí, "products" será un array con los productos de la categoría.
+          // Puedes usar estos datos para actualizar tu página web.
 
-    // Realiza la llamada fetch al endpoint de tu servidor
-    fetch(`../controller/llistar_productes_per_categories.php?categoria=${category}`)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        // Aquí puedes actualizar el DOM de tu página con los datos recibidos
-        // Por ejemplo, podrías crear un nuevo elemento para cada producto y añadirlo a la lista de productos
-        const productList = document.querySelector('.products-list');
-        productList.innerHTML = ''; // Limpia la lista de productos existente
-        data.forEach(product => {
-          const productItem = document.createElement('div');
-          productItem.classList.add('product-item');
-          productItem.innerHTML = `
-            <img src="../imagenes/${product.imatge}.png" width="300" height="300" alt="${product.nom}">
-            <a href="#">${product.nom}</a>
-            <p>${product.descripcio}</p>
-            <p>Precio: ${product.preu}€</p>
-          `;
-          productList.appendChild(productItem);
+          // Encuentra el elemento de la lista de productos en tu página web
+          const productsList = document.querySelector('.products-list');
+
+          // Elimina todos los productos existentes de la lista
+          while (productsList.firstChild) {
+            productsList.removeChild(productsList.firstChild);
+          }
+
+          // Añade cada producto a la lista
+          products.forEach(product => {
+            // Crea un nuevo elemento de producto
+            const productItem = document.createElement('div');
+            productItem.classList.add('product-item');
+
+            // Añade el título del producto
+            const title = document.createElement('a');
+            title.href = 'index.php?id=' + product.id;
+            title.textContent = product.nom;
+            productItem.appendChild(title);
+
+            // Añade la imagen del producto
+            const image = document.createElement('img');
+            image.src = '../imagenes/' + product.imatge + '.png';
+            image.width = 300;
+            image.height = 300;
+            image.alt = product.nom;
+            productItem.appendChild(image);
+            //index.php?accio=categoria&categoria=Anime
+            // Añade la descripción del producto
+            const description = document.createElement('p');
+            description.textContent = product.descripcio;
+            productItem.appendChild(description);
+
+            // Añade el precio del producto
+            const price = document.createElement('p');
+            price.textContent = 'Precio: ' + product.preu + '€';
+            productItem.appendChild(price);
+
+            // Añade el botón de detalles
+            const detailsButton = document.createElement('button');
+            detailsButton.classList.add('details-button');
+            detailsButton.textContent = 'Ver detalles';
+            productItem.appendChild(detailsButton);
+
+            // Añade el elemento de producto a la lista de productos
+            productsList.appendChild(productItem);
+          });
+        })
+        .catch(error => {
+          console.log('There was a problem with the fetch operation:', error.message);
         });
-      })
-      .catch(error => console.error('Error:', error));
+    });
   });
-});
-// Selecciona todos los productos
-const detailButtons = document.querySelectorAll('.details-button');
 
-// Añade un event listener a cada botón
-detailButtons.forEach(button => {
-  button.addEventListener('click', function(event) {
-    // Previene el comportamiento por defecto del botón
-    event.preventDefault();
+  document.querySelector('.products-list').addEventListener('click', event => {
+    // Comprueba si se hizo clic en un botón de detalles
+    if (event.target.classList.contains('details-button')) {
+      // Prevent the default action
+      event.preventDefault();
 
+      // Get the product ID from the clicked button
+      const id = event.target.parentElement.querySelector('a').href.split('=')[1];
 
-    // Obtiene el ID del producto del atributo href del enlace
-    const productId = this.querySelector('a').getAttribute('href').split('=')[1];
+      fetch('controller/detalles_del_producto.php?id=' + id)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(products => {
+          // Aquí, "products" será un array con los productos de la categoría.
+          // Puedes usar estos datos para actualizar tu página web.
 
-    // Realiza la llamada fetch al endpoint de tu servidor
-    fetch(`../controller/detalles_del_producto.php?id=${productId}`)
-      .then(response => response.json())
-      .then(data => {
-        // Aquí puedes actualizar el DOM de tu página con los datos recibidos
-        // Por ejemplo, podrías crear un nuevo elemento para cada detalle del producto y añadirlo a un contenedor de detalles del producto
-        const productDetailsContainer = document.querySelector('.product-details');
-        productDetailsContainer.innerHTML = ''; // Limpia los detalles del producto existente
-        const productDetails = document.createElement('div');
-        productDetails.innerHTML = `
-          <h2>${data.titulo}</h2>
-          <img src="../imagenes/${data.imagen}.png" width="300" height="300" alt="${data.titulo}">
-          <p>${data.descripcion}</p>
-          <p>Precio: ${data.precio}€</p>
-          <button>Añadir al carrito</button>
-        `;
-        productDetailsContainer.appendChild(productDetails);
-      })
-      .catch(error => console.error('Error:', error));
+          // Encuentra el elemento de la lista de productos en tu página web
+          const productsList = document.querySelector('.products-list');
+
+          // Elimina todos los productos existentes de la lista
+          while (productsList.firstChild) {
+            productsList.removeChild(productsList.firstChild);
+          }
+
+          // Añade cada producto a la lista
+          products.forEach(product => {
+            // Crea un nuevo elemento de producto
+            const productItem = document.createElement('div');
+            productItem.classList.add('product-item');
+
+            // Añade el título del producto
+            const title = document.createElement('a');
+            title.href = 'index.php?id=' + product.id;
+            title.textContent = product.nom;
+            productItem.appendChild(title);
+
+            // Añade la imagen del producto
+            const image = document.createElement('img');
+            image.src = '../imagenes/' + product.imatge + '.png';
+            image.width = 300;
+            image.height = 300;
+            image.alt = product.nom;
+            productItem.appendChild(image);
+
+            // Añade la descripción del producto
+            const description = document.createElement('p');
+            description.textContent = product.descripcio;
+            productItem.appendChild(description);
+
+            // Añade el precio del producto
+            const price = document.createElement('p');
+            price.textContent = 'Precio: ' + product.preu + '€';
+            productItem.appendChild(price);
+
+            // Añade el botón de detalles
+            const detailsButton = document.createElement('button');
+            detailsButton.classList.add('details-button');
+            detailsButton.textContent = 'Añadir al carrito';
+            productItem.appendChild(detailsButton);
+
+            // Añade el elemento de producto a la lista de productos
+            productsList.appendChild(productItem);
+          });
+        })
+
+        .catch(error => {
+          console.log('There was a problem with the fetch operation:', error.message);
+        });
+    }
   });
-});
 
+});

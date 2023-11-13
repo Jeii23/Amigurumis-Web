@@ -1,6 +1,4 @@
 <?php
-// controller/llistar_productes_per_categories.php
-
 require_once __DIR__.'/../model/connectaDB.php';
 require_once __DIR__.'/../model/categories.php';
 
@@ -11,6 +9,7 @@ $categoria = $_GET['categoria'] ?? NULL;
 
 $products = getProductByCategory($categoria, $password_a8); // Obtiene los productos 
 
-include __DIR__.'/../view/home.php';
-
+// Devuelve los datos en formato JSON
+header('Content-Type: application/json');
+echo json_encode($products);
 ?>
