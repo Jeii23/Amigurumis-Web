@@ -1,11 +1,15 @@
 <?php
-// controller/llistar_categories.php
-
-require_once __DIR__.'/../model/connectaDb.php';
+require_once __DIR__.'/../model/connectaDB.php';
 require_once __DIR__.'/../model/categories.php';
 
-$categories = getCategories(); // Aquesta crida és al model
+$password_a8 = 'Viz3uVkJ'; //NO ESTOY SEGURO
 
-include __DIR__.'/../views/llistar_categories.php';
+$categories = getCategories($password_a8); // Obtiene las categorías 
 
+
+include __DIR__.'/../view/home.php';
+
+// Devuelve los datos en formato JSON
+//header('Content-Type: application/json');
+//echo json_encode($categories);
 ?>

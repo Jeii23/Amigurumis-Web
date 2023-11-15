@@ -33,7 +33,10 @@ body {
 
 }
 
-.wrap .header>h1 {
+.wrap .header h1 .header-link:link,
+.header-link:visited,
+.header-link:hover,
+.header-link:active {
 
     color: #F38181;
     font-weight: 450;
@@ -41,6 +44,8 @@ body {
     flex-direction: column;
     text-align: center;
     margin: 15px 0px;
+    text-decoration: none; /* Esto quitará el subrayado */
+
 }
 
 .wrap .login_register a {
@@ -112,7 +117,7 @@ body {
     flex-wrap: wrap;
 }
 
-.products-list .porduct-item {
+.products-list .product-item {
 
     width: 22%;
     background: gray;
@@ -127,12 +132,12 @@ body {
 
 }
 
-.products-list .porduct-item img {
+.products-list .product-item img {
 
     width: 100%;
 }
 
-.products-list .porduct-item a {
+.products-list .product-item a {
 
     display: block;
     width: 100%;
