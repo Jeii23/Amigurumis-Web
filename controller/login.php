@@ -5,7 +5,6 @@ require_once __DIR__.'/../model/users.php';
 $password_a8 = 'Viz3uVkJ'; //NO ESTOY SEGURO
 
 // Recoge los datos del formulario
-$username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
@@ -13,14 +12,14 @@ $password = $_POST['password'];
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 // Almacena los datos del usuario en la base de datos
-$result = createUser($username, $email, $hashed_password, $password_a8);
+$result = loginUser($email, $hashed_password, $password_a8);
 
 if ($result) {
-    echo "Usuario registrado con éxito.";
+    echo "Usuario logeado con éxito.";
     header('Location: ../index.php');
     exit;
 } else {
-    echo "Error al registrar el usuario.";
+    echo "Error al logear el usuario.";
 }
 
 
