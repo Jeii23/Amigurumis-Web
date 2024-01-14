@@ -24,11 +24,12 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-// Comprueba si el código postal es un número entero
-if (!filter_var($zip, FILTER_VALIDATE_INT)) {
+// Comprueba si el código postal es un número de 5 dígitos
+if (!preg_match("/^\d{5}$/", $zip)) {
     echo "<script>alert('Por favor, introduce un código postal válido.'); window.location.href='../Login_Register/register.html';</script>";
     exit;
 }
+
 
 // Cifra la contraseña
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
