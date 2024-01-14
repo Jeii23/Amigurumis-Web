@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', (event) => {
   document.querySelectorAll('.category_item').forEach(item => {
     item.addEventListener('click', event => {
@@ -131,8 +132,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             // Añade el botón de detalles
             const detailsButton = document.createElement('button');
-            detailsButton.classList.add('details-button');
+            detailsButton.classList.add('añadir-carrito');
             detailsButton.textContent = 'Añadir al carrito';
+            detailsButton.dataset.id = product.id;  // Asigna el ID del producto al atributo data-id
+            detailsButton.addEventListener('click', function() {
+                var product_id = $(this).data('id');
+              
+                $.ajax({
+                    url: '../controller/añadir_carrito.php',
+                    method: 'post',
+                    data: { id: product_id },
+                    success: function(response) {
+                        alert(response);
+                    }
+                });
+            });
             productItem.appendChild(detailsButton);
 
             // Añade el elemento de producto a la lista de productos
@@ -146,4 +160,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
   });
 
+
+  
 });

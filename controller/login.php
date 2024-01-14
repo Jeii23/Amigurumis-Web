@@ -8,21 +8,26 @@ $password_a8 = 'Viz3uVkJ'; //NO ESTOY SEGURO
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-// Cifra la contraseña
-$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+// Obtiene el usuario de la base de datos
+$user = getUserByEmail($email, $password_a8);
 
-// Almacena los datos del usuario en la base de datos
-$result = loginUser($email, $hashed_password, $password_a8);
+if ($user) {
+    // Comprueba si la contraseña es correcta
+    if (password_verify($password, $user['password'])) {
+        // Inicia la sesión y guarda los datos del usuario en la sesión
+        session_start();
+        $_SESSION['user'] = $user;
 
-if ($result) {
-    echo "Usuario logeado con éxito.";
-    header('Location: ../index.php');
-    exit;
+        echo "Usuario logeado con éxito.";
+        header('Location: ../index.php');
+        exit;
+    } else {
+        echo "<script>alert('Contraseña incorrecta.'); window.location.href='../Login_Register/login.html';</script>";
+        exit;
+    }
 } else {
-    echo "Error al logear el usuario.";
+    echo "<script>alert('Usuario no encontrado.'); window.location.href='../Login_Register/login.html';</script>";
+    exit;
 }
-
-
-include __DIR__.'/../view/home.php';
-
 ?>
+
