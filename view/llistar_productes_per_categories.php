@@ -12,15 +12,17 @@
 
     
     <?php foreach ($products as $product): ?>
-        <li>
-            <h3><?php echo $product['nom'] ?></h3>
-            <img src='<?php echo $product['imatge'] ?>' alt='<?php echo $product['nom'] ?>'>
-            <p>Descripcion: <?php echo $product['descripcio'] ?></p>
-            <?php echo $product['activo'] ? "<p>Activo</p>" : "<p>Inactivo</p>"; ?>
-            <p>ID: <?php echo $product['id'] ?></p>
-            <p>Precio: <?php echo $product['preu'] ?></p>
-        </li>
+    <li>
+        <h3><?php echo $product['nom'] ?></h3>
+        <img src='<?php echo $product['imatge'] ?>' alt='<?php echo $product['nom'] ?>'>
+        <p>Descripcion: <?php echo $product['descripcio'] ?></p>
+        <?php echo $product['activo'] ? "<p>Activo</p>" : "<p>Inactivo</p>"; ?>
+        <p>ID: <?php echo $product['id'] ?></p>
+        <p>Precio: <?php echo $product['preu'] ?>€</p>
+        <button class="añadir_carrito" data-id="<?php echo $product['id']; ?>">Añadir al carrito</button>
+    </li>
     <?php endforeach; ?>
+
     </ul>
 </body>
 </html>

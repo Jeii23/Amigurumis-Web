@@ -33,7 +33,50 @@
             <input type="submit" value="Registrar">
           </div>
         </form> 
+        
         </div>
+        <script>
+          document.querySelector("form").addEventListener("submit", function(event) {
+              // Obtén los valores del formulario
+              var username = document.getElementById("username").value;
+              var email = document.getElementById("email").value;
+              var password = document.getElementById("password").value;
+              var address = document.getElementById("address").value;
+              var city = document.getElementById("city").value;
+              var zip = document.getElementById("zip").value;
+      
+              // Comprueba si algún campo está vacío
+              if (!username || !email || !password || !address || !city || !zip) {
+                  alert("Por favor, rellena todos los campos.");
+                  event.preventDefault();
+                  return;
+              }
+      
+              // Comprueba si el correo electrónico tiene un formato válido
+              var emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+              if (!emailRegex.test(email)) {
+                  alert("Por favor, introduce un correo electrónico válido.");
+                  event.preventDefault();
+                  return;
+              }
+      
+              // Comprueba si la dirección y la ciudad no tienen más de 30 caracteres
+              if (address.length > 30 || city.length > 30) {
+                  alert("La dirección y la ciudad no pueden tener más de 30 caracteres.");
+                  event.preventDefault();
+                  return;
+              }
+      
+              // Comprueba si el código postal tiene 5 dígitos
+              var zipRegex = /^\d{5}$/;
+              if (!zipRegex.test(zip)) {
+                  alert("Por favor, introduce un código postal válido de 5 dígitos.");
+                  event.preventDefault();
+                  return;
+              }
+          });
+      </script>
+      
 </body>
 
 </html>

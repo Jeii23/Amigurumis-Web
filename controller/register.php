@@ -8,6 +8,27 @@ $password_a8 = 'Viz3uVkJ'; //NO ESTOY SEGURO
 $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
+$address = $_POST['address'];
+$city = $_POST['city'];
+$zip = $_POST['zip'];
+
+// Comprueba si algún campo está vacío
+if (empty($username) || empty($email) || empty($password) || empty($address) || empty($city) || empty($zip)) {
+    echo "<script>alert('Por favor, rellena todos los campos.'); window.location.href='../Login_Register/register.html';</script>";
+    exit;
+}
+
+// Comprueba si el correo electrónico tiene un formato válido
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "<script>alert('Por favor, introduce un correo electrónico válido.'); window.location.href='../Login_Register/register.html';</script>";
+    exit;
+}
+
+// Comprueba si el código postal es un número entero
+if (!filter_var($zip, FILTER_VALIDATE_INT)) {
+    echo "<script>alert('Por favor, introduce un código postal válido.'); window.location.href='../Login_Register/register.html';</script>";
+    exit;
+}
 
 // Cifra la contraseña
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -20,10 +41,7 @@ if ($result) {
     header('Location: ../index.php');
     exit;
 } else {
-    echo "Error al registrar el usuario.";
+    echo "<script>alert('Error al registrar el usuario.'); window.location.href='../Login_Register/register.html';</script>";
+    exit;
 }
-
-
-include __DIR__.'/../view/home.php';
-
 ?>

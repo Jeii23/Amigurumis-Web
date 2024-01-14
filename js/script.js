@@ -146,4 +146,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
   });
 
+  $('.añadir-carrito').click(function() {
+    var product_id = $(this).data('id');
+  
+    $.ajax({
+        url: '../controller/añadir_carrito.php',
+        method: 'post',
+        data: { id: product_id },
+        success: function(response) {
+            alert(response);
+        }
+    });
+  });
+  
 });
