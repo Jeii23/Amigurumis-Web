@@ -73,3 +73,28 @@ function loginUser($email, $hashed_password, $password_a8) {
     // Devuelve el resultado de la consulta
     return $result;
 }
+
+function updateUser($username, $email, $password, $profile_image, $password_a8) {
+    // Conecta a la base de datos
+    $conn = connectaDB($password_a8);
+
+    // Prepara la consulta SQL para actualizar los datos del usuario
+    $sql = "UPDATE public.usuari SET username = $1, email = $2, password = $3, profile_image = $4 WHERE email = $2;";
+    $params = [$username, $email, $password, $profile_image];
+
+    // Ejecuta la consulta
+    $result = pg_query_params($conn, $sql, $params);
+
+    // Verifica si la consulta fue exitosa
+    if ($result === FALSE) {
+        echo "Error en la consulta: " . pg_last_error($conn);
+        return FALSE;
+    }
+
+    // Cierra la conexión a la base de datos
+    pg_close($conn);
+
+    // Devuelve el resultado de la consulta
+    return $result;
+}
+

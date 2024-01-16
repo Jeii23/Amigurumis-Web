@@ -73,8 +73,6 @@ function getProductByCategory($category, $password_a8) {
     }
 }
 
-
-
 function getCategories($password_a8) {
     // Conecta a la base de datos
     $conn = connectaDB($password_a8);
@@ -94,6 +92,31 @@ function getCategories($password_a8) {
 
     // Obtiene los resultados
     
+
+    // Verifica si la consulta fue exitosa
+    if ($result) {
+        // Si hay resultados, los guarda en un array
+        $products = [];
+        while ($row = pg_fetch_assoc($result)) {
+            $products[] = $row;
+        }
+        return $products;
+    } else {
+        // Si no hay resultados, devuelve un array vacío
+        return [];
+    }
+}
+
+function searchProducts($searchTerm, $password_a8) {
+    // Conecta a la base de datos
+    $conn = connectaDB($password_a8);
+
+    // Prepara la consulta SQL para buscar productos
+    $sql = "SELECT * FROM public.products WHERE nom LIKE $1 OR descripcio LIKE $1;";
+    $params = ['%' . $searchTerm . '%'];
+
+    // Ejecuta la consulta y obtén los resultados
+    $result = pg_query_params($conn, $sql, $params);
 
     // Verifica si la consulta fue exitosa
     if ($result) {

@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__.'/../model/connectaDB.php';
-require_once __DIR__.'/../model/users.php';
+require_once __DIR__ . '/../model/connectaDB.php';
+require_once __DIR__ . '/../model/users.php';
 
 $password_a8 = 'Viz3uVkJ'; //NO ESTOY SEGURO
 
@@ -45,4 +45,3 @@ if ($result) {
     echo "<script>alert('Error al registrar el usuario.'); window.location.href='../Login_Register/register.html';</script>";
     exit;
 }
-?>
