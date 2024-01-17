@@ -3,3 +3,4 @@ AuthName "Botiga online"
 AuthBasicProvider file
 AuthUserFile /home/TDIW/tdiw-a8/public_html/.htpasswd
 Require valid-user
+php_flag display_errors Off

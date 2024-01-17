@@ -278,4 +278,17 @@ form {
     margin: 0; /* Añade esta línea */
     padding: 0; /* Añade esta línea */
 }
+.mis_comandas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18%;
+    padding: 15px 10px;
+    margin-bottom: 20px;
+    background: #95E1D3;
+    box-shadow: 0px 0px 6px 0px #F38181;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
 

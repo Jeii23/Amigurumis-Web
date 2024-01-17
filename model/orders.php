@@ -55,3 +55,19 @@ function createOrder($cart, $password_a8)
 
     pg_close($conn);
 }
+
+function getOrdersByUserId($userId, $password_a8) {
+    $conn = connectaDB($password_a8);
+    $sql = "SELECT * FROM comanda WHERE usuari_id = $1";
+    $result = pg_query_params($conn, $sql, [$userId]);
+
+    if ($result) {
+        $orders = pg_fetch_all($result);
+        return $orders;
+    } else {
+        echo "Error: " . $sql . "<br>" . pg_last_error($conn);
+        return false;
+    }
+
+    pg_close($conn);
+}

@@ -27,6 +27,13 @@ session_start();
             </div>
         </div>
     </div>
+
+        <div class="header">
+            <div class="login_register">
+                <a href="../controller/comandes.php" class="mis_comandas">Mis Pedidos</a>
+            </div>
+        </div>
+
     <div class="center">
         <?php
         // Inicia la sesión
