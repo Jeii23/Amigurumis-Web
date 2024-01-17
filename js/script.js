@@ -187,57 +187,63 @@ document.addEventListener('DOMContentLoaded', (event) => {
       url: '../controller/buscar.php',
       method: 'get',
       data: { query: query },
-      success: function (response) {
-        // Parse the JSON response
-        try {
-          var products = JSON.parse(response);
-        } catch (error) {
-          console.error('Error parsing JSON:', error);
+      dataType: 'json', // Asegúrate de que jQuery trate la respuesta como JSON
+      success: function (products) {
+        // Comprueba si los productos son un array
+        if (Array.isArray(products)) {
+          // Find the products list element on your web page
+          var productsList = document.querySelector('.products-list');
+
+          // Remove all existing products from the list
+          while (productsList.firstChild) {
+            productsList.removeChild(productsList.firstChild);
+          }
+
+          // Add each product to the list
+          products.forEach(function (product) {
+            // Create a new product item element
+            var productItem = document.createElement('div');
+            productItem.classList.add('product-item');
+
+            // Add the product title
+            var title = document.createElement('a');
+            title.href = 'index.php?id=' + product.id;
+            title.textContent = product.nom;
+            productItem.appendChild(title);
+
+            // Add the product image
+            var image = document.createElement('img');
+            image.src = '../imagenes/' + product.imatge + '.png';
+            image.width = 300;
+            image.height = 300;
+            image.alt = product.nom;
+            productItem.appendChild(image);
+
+            // Add the product description
+            var description = document.createElement('p');
+            description.textContent = product.descripcio;
+            productItem.appendChild(description);
+
+             // Añade el precio del producto
+             const price = document.createElement('p');
+             price.textContent = 'Precio: ' + product.preu + '€';
+             productItem.appendChild(price);
+ 
+             // Añade el botón de detalles
+             const detailsButton = document.createElement('button');
+             detailsButton.classList.add('details-button');
+             detailsButton.textContent = 'Ver detalles';
+             productItem.appendChild(detailsButton);
+
+            // Add the product to the products list
+            productsList.appendChild(productItem);
+          });
+        } else {
+          console.error('Los productos no son un array:', products);
         }
-
-        // Find the products list element on your web page
-        var productsList = document.querySelector('.products-list');
-
-        // Remove all existing products from the list
-        while (productsList.firstChild) {
-          productsList.removeChild(productsList.firstChild);
-        }
-
-        // Add each product to the list
-        products.forEach(function (product) {
-          // Create a new product item element
-          var productItem = document.createElement('div');
-          productItem.classList.add('product-item');
-
-          // Add the product title
-          var title = document.createElement('a');
-          title.href = 'index.php?id=' + product.id;
-          title.textContent = product.nom;
-          productItem.appendChild(title);
-
-          // Add the product image
-          var image = document.createElement('img');
-          image.src = '../imagenes/' + product.imatge + '.png';
-          image.width = 300;
-          image.height = 300;
-          image.alt = product.nom;
-          productItem.appendChild(image);
-
-          // Add the product description
-          var description = document.createElement('p');
-          description.textContent = product.descripcio;
-          productItem.appendChild(description);
-
-          // Add the product price
-          var price = document.createElement('p');
-          price.textContent = 'Precio: ' + product.preu + '€';
-          productItem.appendChild(price);
-
-          // Add the product to the products list
-          productsList.appendChild(productItem);
-        });
       }
     });
   });
+
 
 });

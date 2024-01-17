@@ -8,7 +8,7 @@ function searchProducts($searchTerm, $password_a8) {
     $conn = connectaDB($password_a8);
 
     // Prepara la consulta SQL para buscar productos
-    $sql = "SELECT * FROM public.products WHERE nom LIKE $1 OR descripcio LIKE $1";
+    $sql = "SELECT * FROM public.products WHERE nom ILIKE $1 OR descripcio ILIKE $1 ";
 
     // Prepara la consulta
     $result = pg_prepare($conn, "my_query", $sql);
