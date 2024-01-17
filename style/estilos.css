@@ -8,6 +8,7 @@
 body {
     background-color: #EAFFD0;
     font-family: 'Open Sans', sans-serif;
+    padding-bottom: 40px;
 }
 
 
@@ -269,3 +270,12 @@ form {
     width: 200px;
     height: 200px;
 }
+.cart-summary {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #FCE38A;
+    margin: 0; /* Añade esta línea */
+    padding: 0; /* Añade esta línea */
+}
+
