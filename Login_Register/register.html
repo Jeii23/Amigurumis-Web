@@ -9,6 +9,16 @@
 </head>
 
 <body>
+
+  <div class="wrap">
+    <div class="header">
+      <h1><a href=../index.php class="header-link">Amigurumi House</a></h1>
+      <div class="login_register">
+        <a href="../Login_Register/login.html" class="login">Login</a>
+        <a href="../Login_Register/register.html" class="registre">Registro</a>
+      </div>
+    </div>
+  </div>
   <div class="center">
     <h2>Formulario de Registro</h2>
 
@@ -36,7 +46,7 @@
 
   </div>
   <script>
-    document.querySelector("form").addEventListener("submit", function (event) {
+    document.querySelector("form").addEventListener("submit", function(event) {
       // Obtén los valores del formulario
       var username = document.getElementById("username").value;
       var email = document.getElementById("email").value;

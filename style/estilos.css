@@ -248,3 +248,24 @@ form {
     border-bottom: 1px solid #000; 
     padding-bottom: 10px; 
 }
+
+.finalizar-compra, .borrar-todo {
+    display: block;
+    margin-bottom: 10px; 
+    width: 200px; 
+    margin-right: auto; 
+    margin-left: 0; 
+}
+
+.finalizar-compra {
+    background-color: green; 
+}
+
+.borrar-todo {
+    background-color: red; 
+}
+
+.product-image {
+    width: 200px;
+    height: 200px;
+}

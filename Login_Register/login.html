@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/estilos.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style/estilos.css">
+  <title>Document</title>
 </head>
+
 <body>
-    <div class="center">
-        <h2>Login</h2>
-        <br>
-        <form action="../controller/login.php" method="post">
-          <div class="column">
-            <label for="email">Correo Electrónico:</label><br>
-            <input type="email" id="email" name="email" required><br>
-            <label for="password">Contraseña:</label><br>
-            <input type="password" id="password" name="password" pattern="[A-Za-z0-9]+" required><br>
-          </div>
-         
-          <div class="submit-button">
-            <input type="submit" value="Registrar">
-          </div>
-        </form> 
+  <div class="wrap">
+  <div class="header">
+    <h1><a href=../index.php class="header-link">Amigurumi House</a></h1>
+    <div class="login_register">
+      <a href="../Login_Register/login.html" class="login">Login</a>
+      <a href="../Login_Register/register.html" class="registre">Registro</a>
     </div>
+  </div>
+  </div>
+  <div class="center">
+    <h2>Login</h2>
+    <br>
+    <form action="../controller/login.php" method="post">
+      <div class="column">
+        <label for="email">Correo Electrónico:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="password">Contraseña:</label><br>
+        <input type="password" id="password" name="password" pattern="[A-Za-z0-9]+" required><br>
+      </div>
+
+      <div class="submit-button">
+        <input type="submit" value="Registrar">
+      </div>
+    </form>
+  </div>
 </body>
+
 </html>

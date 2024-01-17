@@ -4,7 +4,10 @@ require_once __DIR__.'/../model/categories.php';
 
 $password_a8 = 'Viz3uVkJ'; //NO ESTOY SEGURO
 
-session_start();
+
+if (isset($_POST['borrar_todo'])) {
+    $_SESSION['cart'] = [];
+}
 
 $cart = $_SESSION['cart'] ?? [];
 
@@ -18,13 +21,14 @@ foreach ($cart as $product_id => $quantity) {
     // Utiliza la función getProductById para obtener los detalles del producto
     $product_details = getProductById($product_id, $password_a8);
 
-    // Añade la cantidad al array de detalles del producto
-    $product_details[0]['quantity'] = $quantity;
+    // Comprueba si getProductById devolvió un resultado
+    if ($product_details) {
+        // Añade la cantidad al array de detalles del producto
+        $product_details[0]['quantity'] = $quantity;
 
-    // Añade los detalles del producto al array de productos
-    $products[] = $product_details[0];
+        // Añade los detalles del producto al array de productos
+        $products[] = $product_details[0];
+    }
 }
-// Aquí podrías hacer una consulta a la base de datos para obtener los detalles de los productos en el carrito...
 
-include '../view/cesta.php';
 ?>
